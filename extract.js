@@ -1,7 +1,8 @@
 const fs = require("fs");
 const config = require("./config");
 
-const script = fs.readFileSync("./script.dsl", { encoding: "utf8" });
+const arg = process.argv[2];
+const script = fs.readFileSync(`./${arg}.dsl`, { encoding: "utf8" });
 
 const parseTree = (txt) => {
   const root = [];
@@ -32,11 +33,10 @@ const parseTree = (txt) => {
   return { root, methods: [...new Set(methods)] };
 };
 
-const now = Date.now();
 const res = parseTree(script);
-fs.writeFileSync(`./root.${now}.json`, JSON.stringify(res.root, null, 2));
+fs.writeFileSync(`./root.${arg}.json`, JSON.stringify(res.root, null, 2));
 fs.writeFileSync(
-  `./templates.${now}.js`,
+  `./templates.${arg}.js`,
   `module.exports = {\n${res.methods
     .map((methods) => {
       const func = config.func(methods);

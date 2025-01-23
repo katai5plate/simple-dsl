@@ -1,8 +1,10 @@
 # simple-dsl
 
-スクリプト型自作DSL
+スクリプト型自作 DSL
 
 プログラミングにも、雑務にも、日常用途にも。
+
+[いや、日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
 
 ## Usage
 
@@ -35,9 +37,9 @@ module.exports = {
   BER: (children, color) => [
     `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion.txt" に出力される
     `const BER: TypeofBER = 0 as any;`, // 次の工程で "list.txt" にて列挙される文字列
-  ]
+  ],
   // ...
-}
+};
 ```
 
 デフォルトを変えたい場合は `config.js` を書き換えてください。
@@ -49,6 +51,7 @@ module.exports = {
 ```xml
 <HOGE><FUGA><FOO><BAR></BAR><BER color="red"></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>
 ```
+
 ```ts
 const BAR: string = "ああああ";
 const BER: string = "いいいい";

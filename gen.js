@@ -1,7 +1,10 @@
 const fs = require("fs");
+
 const arg = process.argv[2];
 const templates = require(`./templates.${arg}.js`);
-const root = JSON.parse(fs.readFileSync(`./root.${arg}.json`, { encoding: "utf8" }));
+const root = JSON.parse(
+  fs.readFileSync(`./root.${arg}.json`, { encoding: "utf8" })
+);
 
 const listSet = new Set();
 
@@ -19,5 +22,8 @@ const generateRecursion = (node) => {
   return rec;
 };
 
-fs.writeFileSync("./recursion.txt", root.map(generateRecursion).join("\n"));
-fs.writeFileSync("./list.txt", [...listSet].join("\n"));
+fs.writeFileSync(
+  `./recursion.${arg}.txt`,
+  root.map(generateRecursion).join("\n")
+);
+fs.writeFileSync(`./list.${arg}.txt`, [...listSet].join("\n"));
