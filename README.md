@@ -31,7 +31,7 @@ HOGE
 module.exports = {
   // ...
   BER: (children, color) => [
-    `<BER>${children}</BER>`, // 再帰的に評価され、次の工程で "recursion.txt" に出力される
+    `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion.txt" に出力される
     `const BER: TypeofBER = 0 as any;`, // 次の工程で "list.txt" にて列挙される文字列
   ]
   // ...
@@ -45,7 +45,7 @@ module.exports = {
 すると、`recursion.txt`, `list.txt` が生成される。
 
 ```xml
-<HOGE><FUGA><FOO><BAR></BAR><BER></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>
+<HOGE><FUGA><FOO><BAR></BAR><BER color="red"></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>
 ```
 ```ts
 const BAR: string = "ああああ";
