@@ -26,4 +26,4 @@ fs.writeFileSync(
   `./recursion.${arg}.txt`,
   root.map(generateRecursion).join("\n")
 );
-fs.writeFileSync(`./list.${arg}.txt`, [...listSet].join("\n"));
+fs.writeFileSync(`./list.${arg}.txt`, [...listSet].reverse().join("\n"));

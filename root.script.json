@@ -1,0 +1,57 @@
+[
+  {
+    "method": "HOGE",
+    "label": "",
+    "props": {},
+    "children": [
+      {
+        "method": "FUGA",
+        "label": "",
+        "props": {},
+        "children": [
+          {
+            "method": "FOO",
+            "label": "",
+            "props": {},
+            "children": [
+              {
+                "method": "BAR",
+                "label": "ああああ",
+                "props": {},
+                "children": []
+              },
+              {
+                "method": "BER",
+                "label": "いいいい",
+                "props": {
+                  "color": "red"
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "method": "HELLO",
+            "label": "",
+            "props": {},
+            "children": [
+              {
+                "method": "WORLD",
+                "label": "うううう",
+                "props": {
+                  "numbers": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "text": "aaaaaa"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -53,11 +53,11 @@ module.exports = {
 ```
 
 ```ts
-const BAR: string = "ああああ";
-const BER: string = "いいいい";
-const FOO: string = "";
-const WORLD: string = "うううう";
-const HELLO: string = "";
-const FUGA: string = "";
 const HOGE: string = "";
+const FUGA: string = "";
+const HELLO: string = "";
+const WORLD: string = "うううう";
+const FOO: string = "";
+const BER: string = "いいいい";
+const BAR: string = "ああああ";
 ```

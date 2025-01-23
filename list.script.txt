@@ -1,0 +1,7 @@
+const HOGE: string = "";
+const FUGA: string = "";
+const HELLO: string = "";
+const WORLD: string = "うううう";
+const FOO: string = "";
+const BER: string = "いいいい";
+const BAR: string = "ああああ";
