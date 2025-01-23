@@ -4,11 +4,11 @@
 
 プログラミングにも、雑務にも、日常用途にも。
 
-[いや、日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
+[いや、雑務や日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
 
 ## Usage
 
-### 1. `script.dsl` を作成
+### 1. `{name}.dsl` を作成
 
 ```
 HOGE
@@ -25,7 +25,7 @@ HOGE
 メソッド名 `ラベル名` { プロパティ }
 ```
 
-### 2. `node extract` を実行
+### 2. `node extract {name}` を実行
 
 すると `templates.{name}.js` が生成される。
 
