@@ -4,7 +4,7 @@
 
 プログラミングにも、雑務にも、日常用途にも。
 
-[いや、日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
+[いや、雑務や日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
 
 ## Usage
 
