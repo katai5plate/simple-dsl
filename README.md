@@ -17,7 +17,7 @@ HOGE
       BAR `ああああ`
       BER `いいいい` {color: "red"}
     HELLO
-      WORLD `うううう` {numbers: [1, 2, 3], text: "aaaaaa"}
+      WORLD `うううう` {numbers: [1, 2, 3], date: new Date().toLocaleDateString()}
 ```
 
 ```
@@ -39,6 +39,10 @@ module.exports = {
     `const BER: TypeofBER = 0 as any;`, // 次の工程で "list" にて列挙される文字列
   ],
   // ...
+  WORLD: (children, numbers, date) => [
+    `<WORLD>${children}</WORLD>`,
+    `const WORLD: string = "${date}";`,
+  ],
 };
 ```
 
@@ -49,15 +53,25 @@ module.exports = {
 すると、`{name}.recursion.txt`, `{name}.list.txt` が生成される。
 
 ```xml
-<HOGE><FUGA><FOO><BAR></BAR><BER color="red"></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>
+<HOGE>
+  <FUGA>
+    <FOO>
+      <BAR></BAR>
+      <BER color="red"></BER>
+    </FOO>
+    <HELLO>
+      <WORLD clock="2025/1/24"></WORLD>
+    </HELLO>
+  </FUGA>
+</HOGE>
 ```
 
 ```ts
 const HOGE: string = "";
 const FUGA: string = "";
 const HELLO: string = "";
-const WORLD: string = "うううう";
+const WORLD: string = "2025/1/24";
 const FOO: string = "";
-const BER: string = "いいいい";
+const BER: string = "red";
 const BAR: string = "ああああ";
 ```

@@ -1,7 +1,7 @@
 const HOGE: string = "";
 const FUGA: string = "";
 const HELLO: string = "";
-const WORLD: string = "うううう";
+const WORLD: string = "2025/1/24";
 const FOO: string = "";
-const BER: string = "いいいい";
+const BER: string = "red";
 const BAR: string = "ああああ";
