@@ -15,6 +15,7 @@ const generateRecursion = (node) => {
   console.log(node);
   const [rec, listItem] = fn(
     node.children.map(generateRecursion).join(""),
+    node.label,
     ...Object.values(node.props)
   );
 

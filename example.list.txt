@@ -3,5 +3,5 @@ const FUGA: string = "";
 const HELLO: string = "";
 const WORLD: string = "2025/1/24";
 const FOO: string = "";
-const BER: string = "red";
+const BER: TypeofBER = "いいいい";
 const BAR: string = "ああああ";

@@ -5,7 +5,7 @@ const to = (x) => `\${${x}}`;
 
 module.exports = {
   func: ({ name, label, props }) => [
-    `${INDENTx1}${name}: (children, ${props.join(", ")}) => [`,
+    `${INDENTx1}${name}: (children, label, ${props.join(", ")}) => [`,
     `${INDENTx1}],`,
   ],
   recursion: ({ name, label, props }) =>
