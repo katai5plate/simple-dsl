@@ -43,3 +43,16 @@ module.exports = {
 ### 4. `node gen {name}` を実行
 
 すると、`recursion.txt`, `list.txt` が生成される。
+
+```xml
+<HOGE><FUGA><FOO><BAR></BAR><BER></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>
+```
+```ts
+const BAR: string = "ああああ";
+const BER: string = "いいいい";
+const FOO: string = "";
+const WORLD: string = "うううう";
+const HELLO: string = "";
+const FUGA: string = "";
+const HOGE: string = "";
+```
