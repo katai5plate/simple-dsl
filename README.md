@@ -40,6 +40,7 @@ module.exports = {
   ],
   // ...
   WORLD: (children, numbers, date) => [
+    // dsl で JavaScript を書いた場合、返り値が入っている
     `<WORLD>${children}</WORLD>`,
     `const WORLD: string = "${date}";`,
   ],
