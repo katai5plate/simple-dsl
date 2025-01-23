@@ -27,16 +27,16 @@ HOGE
 
 ### 2. `node extract {name}` を実行
 
-すると `templates.{name}.js` が生成される。
+すると `{name}.templates.js` が生成される。
 
-### 3. `templates.{name}.js` を編集する
+### 3. `{name}.templates.js` を編集する
 
 ```js
 module.exports = {
   // ...
   BER: (children, color) => [
-    `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion.txt" に出力される
-    `const BER: TypeofBER = 0 as any;`, // 次の工程で "list.txt" にて列挙される文字列
+    `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion" に出力される
+    `const BER: TypeofBER = 0 as any;`, // 次の工程で "list" にて列挙される文字列
   ],
   // ...
 };
@@ -46,7 +46,7 @@ module.exports = {
 
 ### 4. `node gen {name}` を実行
 
-すると、`recursion.txt`, `list.txt` が生成される。
+すると、`{name}.recursion.txt`, `{name}.list.txt` が生成される。
 
 ```xml
 <HOGE><FUGA><FOO><BAR></BAR><BER color="red"></BER></FOO><HELLO><WORLD></WORLD></HELLO></FUGA></HOGE>

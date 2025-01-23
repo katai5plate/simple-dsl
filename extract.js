@@ -20,12 +20,14 @@ const parseTree = (txt) => {
         props: m[4] ? eval(`(${m[4]})`) : {},
         children: [],
       };
-      if (!methods.find((x) => x.name === node.method))
+      if (!methods.find((x) => x.name === node.method)) {
         methods.push({
           name: node.method,
           label: node.label,
           props: Object.keys(node.props),
         });
+        console.log(methods);
+      }
       while (stack.at(-1).lvl >= lvl) stack.pop();
       stack.at(-1).ch.push(node);
       stack.push({ lvl, ch: node.children });
@@ -34,9 +36,9 @@ const parseTree = (txt) => {
 };
 
 const res = parseTree(script);
-fs.writeFileSync(`./root.${arg}.json`, JSON.stringify(res.root, null, 2));
+fs.writeFileSync(`./${arg}.root.json`, JSON.stringify(res.root, null, 2));
 fs.writeFileSync(
-  `./templates.${arg}.js`,
+  `./${arg}.templates.js`,
   `module.exports = {\n${res.methods
     .map((methods) => {
       const func = config.func(methods);
@@ -49,3 +51,5 @@ fs.writeFileSync(
     })
     .join("\n")}\n}`
 );
+
+console.log("DONE!");
