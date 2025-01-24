@@ -76,3 +76,35 @@ const FOO: string = "";
 const BER: string = "red";
 const BAR: string = "ああああ";
 ```
+
+## Utils
+
+### div
+
+children で Array.prototype.map を使えるようにする
+
+```js
+const { div } = require("./utils");
+module.exports = {
+  // ...
+  FOO: (children, label) => [
+    `<FOO>${div(children, (child) => {
+      console.log("^^^^^^^^^^^^^^^^^^^^^^");
+      console.log(child);
+      console.log("vvvvvvvvvvvvvvvvvvvvvv");
+      return child;
+    })}</FOO>`,
+    `const FOO: string = "";`,
+  ],
+  // ...
+};
+```
+
+```
+^^^^^^^^^^^^^^^^^^^^^^
+<BAR></BAR>
+vvvvvvvvvvvvvvvvvvvvvv
+^^^^^^^^^^^^^^^^^^^^^^
+<BER color="red"></BER>
+vvvvvvvvvvvvvvvvvvvvvv
+```

@@ -4,6 +4,7 @@ const $ = (x) => `\`${x}\``;
 const to = (x) => `\${${x}}`;
 
 module.exports = {
+  DIVIDER: "#$_DIVIDE_$#",
   func: ({ name, label, props }) => [
     `${INDENTx1}${name}: (children, label, ${props.join(", ")}) => [`,
     `${INDENTx1}],`,
