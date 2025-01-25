@@ -17,7 +17,7 @@ const generateRecursion = (node) => {
   const [rec, listItem] = fn(
     node.children.map(generateRecursion).join(DIVIDER),
     node.label,
-    ...Object.values(node.props)
+    node.props
   );
 
   listSet.add(listItem);
