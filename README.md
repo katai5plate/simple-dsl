@@ -34,12 +34,12 @@ HOGE
 ```js
 module.exports = {
   // ...
-  BER: (children, label, color) => [
+  BER: (children, label, {color}) => [
     `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion" に出力される
     `const BER: TypeofBER = "${label}";`, // 次の工程で "list" にて列挙される文字列
   ],
   // ...
-  WORLD: (children, label, numbers, date) => [
+  WORLD: (children, label, {numbers, date}) => [
     // dsl で JavaScript を書いた場合、返り値が入っている
     `<WORLD>${children}</WORLD>`,
     `const WORLD: string = "${date}";`,
