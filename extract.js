@@ -20,18 +20,23 @@ const parseTree = (txt) => {
         props: m[4] ? eval(`(${m[4]})`) : {},
         children: [],
       };
-      if (!methods.find((x) => x.name === node.method)) {
+      const finded = methods.find((x) => x.name === node.method);
+      const propKeys = Object.keys(node.props);
+      if (!finded) {
         methods.push({
           name: node.method,
           label: node.label,
-          props: Object.keys(node.props),
+          props: propKeys,
         });
-        console.log(methods);
+      } else {
+        const notIncludes = propKeys.filter((p) => !finded.props.includes(p));
+        if (notIncludes.length) finded.props.push(...notIncludes);
       }
       while (stack.at(-1).lvl >= lvl) stack.pop();
       stack.at(-1).ch.push(node);
       stack.push({ lvl, ch: node.children });
     });
+  console.log(methods);
   return { root, methods: [...new Set(methods)] };
 };
 
