@@ -1,10 +1,13 @@
 # simple-dsl
 
-スクリプト型自作 DSL
+スクリプト型自作 DSL  
+叩き台をスピーディに作ります。
 
-プログラミングにも、雑務にも、日常用途にも。
+改造前提の作りになっているので、最低限の構成です。
 
-[いや、雑務や日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
+テンプレートエンジンを使うほど大仰なことはやりたくないけど、それっぽいことをサクっとしたいときにどうぞ。
+
+[雑務や日常用途に使うならこっちがおすすめ。](https://github.com/katai5plate/online-template-maker)
 
 ## Usage
 
@@ -34,12 +37,12 @@ HOGE
 ```js
 module.exports = {
   // ...
-  BER: (children, label, {color}) => [
+  BER: (children, label, { color }) => [
     `<BER color="${color}">${children}</BER>`, // 再帰的に評価され、次の工程で "recursion" に出力される
     `const BER: TypeofBER = "${label}";`, // 次の工程で "list" にて列挙される文字列
   ],
   // ...
-  WORLD: (children, label, {numbers, date}) => [
+  WORLD: (children, label, { numbers, date }) => [
     // dsl で JavaScript を書いた場合、返り値が入っている
     `<WORLD>${children}</WORLD>`,
     `const WORLD: string = "${date}";`,
@@ -107,4 +110,60 @@ vvvvvvvvvvvvvvvvvvvvvv
 ^^^^^^^^^^^^^^^^^^^^^^
 <BER color="red"></BER>
 vvvvvvvvvvvvvvvvvvvvvv
+```
+
+## 小技
+
+### テンプレートを引用する
+
+こうすることで入れ子構造にもできます。
+
+```js
+module.exports = {
+  ABC: (children, label, {}) => {
+    const def = T.DEF("", "def");
+    return [`(${def[0]})`, def[2]];
+  },
+  DEF: (children, label, {}) => [`<${label}>`, "", "あああ"],
+};
+
+const T = module.exports;
+```
+
+### ユニーク ID を得る
+
+用途によっては内容が被っては困る場合もあると思います。  
+その場合は `{name}.template.js` か `config.js` を編集してください。
+
+```js
+let abcId = 0;
+module.exports = {
+  ABC: (children, label, {}) => {
+    abcId++;
+    return [`<div id="abc-${abcId}">${children}</div>`, `{ abc: ${abcId} },`];
+  },
+};
+```
+
+### extract で `{name}.template.js` をリセットしない
+
+extract.js を以下のようにコメントアウトしてください。
+
+```js
+const res = parseTree(script);
+fs.writeFileSync(`./${arg}.root.json`, JSON.stringify(res.root, null, 2));
+// fs.writeFileSync(
+//   `./${arg}.templates.js`,
+//   `module.exports = {\n${res.methods
+//     .map((methods) => {
+//       const func = config.func(methods);
+//       return [
+//         func[0],
+//         `${config.recursion(methods)},`,
+//         `${config.list(methods)},`,
+//         func[1],
+//       ].join("\n");
+//     })
+//     .join("\n")}\n}`
+// );
 ```
