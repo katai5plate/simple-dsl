@@ -54,7 +54,8 @@ module.exports = {
 
 ### 4. `node gen {name}` を実行
 
-すると、`{name}.recursion.txt`, `{name}.list.txt` が生成される。
+すると、`{name}.recursion.txt`, `{name}.list.txt` が生成される。  
+`{name}.list.txt` はテンプレート名ごとに重複しないように出力されるため、定義用途に適してます。
 
 ```xml
 <HOGE>
