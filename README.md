@@ -120,7 +120,7 @@ vvvvvvvvvvvvvvvvvvvvvv
 こうすることで入れ子構造にもできます。
 
 ```js
-module.exports = {
+const T = {
   ABC: (children, label, {}) => {
     const def = T.DEF("", "def");
     return [`(${def[0]})`, def[2]];
@@ -128,7 +128,7 @@ module.exports = {
   DEF: (children, label, {}) => [`<${label}>`, "", "あああ"],
 };
 
-const T = module.exports;
+module.exports = T;
 ```
 
 ### ユニーク ID を得る
